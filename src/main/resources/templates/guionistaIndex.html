@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    
+    <meta charset="utf-8">
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html">
+    </meta>
+
+    <link rel="stylesheet" th:href="@{/css/table.css}"/>
+    <title>Guionistas</title>
+</head>
+
+<body>
+    <div>
+        <h1>Guionistas</h1>   
+
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Fecha Nacimiento</th>
+            </tr>
+
+            <tr th:each="entry,status : ${guionistas}">
+                <td th:text="${entry.nombre}"></td>
+                <td th:text="${entry.direccion}"></td>
+                <td th:text="${entry.fechaNacimiento}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

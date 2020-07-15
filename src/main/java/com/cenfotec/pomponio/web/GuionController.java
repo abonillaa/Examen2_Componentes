@@ -23,18 +23,19 @@ public class GuionController {
 		return "guionIndex";
 	}
 	
-	@GetMapping("/guionForm")
+	@GetMapping("/guion/form")
 	public String guionForm(Model model) throws ParseException {
-		return "guionIndex";
+		return "guionForm";
 	}
 	
-	@PostMapping( "guionForm" )
+	@PostMapping( "/guion/form" )
 	 public void guionForm(@RequestParam MultiValueMap body) throws ParseException 
 	 {   
-		 String nombre = (String) body .getFirst("nombre");
-		 String genero = (String) body .getFirst("genero");
-		 String ideaCentral = (String) body .getFirst("ideaCentral");
-		 Guion guion = new Guion(nombre,genero, ideaCentral);   
+		 String nombre = (String) body.getFirst("nombre");
+		 String genero = (String) body.getFirst("genero");
+		 String ideaCentral = (String) body.getFirst("ideaCentral");
+		 int idGuionista = Integer.parseInt((String) body.getFirst("idGuionista"));
+		 Guion guion = new Guion(nombre,genero, ideaCentral, idGuionista);   
 		 guionService.saveGuion(guion);
 	 }
 	

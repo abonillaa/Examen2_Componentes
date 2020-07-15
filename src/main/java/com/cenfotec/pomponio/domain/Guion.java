@@ -16,20 +16,20 @@ import javax.persistence.ManyToOne;
 public class Guion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID")
+	@Column(name="id")
 	private int id;
 	
-	@Column(name="NOMBRE_OBRA")
+	@Column(name="nombre_obra")
 	private String nombreObra;
 	
-	@Column(name="GENERO_OBRA")
+	@Column(name="genero_obra")
 	private String generoObra;
 	
-	@Column(name="IDEA_CENTRAL")
+	@Column(name="idea_central")
 	private String ideaCentral;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TBL_GUIONISTA_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "tbl_guionista_id", referencedColumnName="id")
     private Guionista guionista;
 
 	public Guion(int id, String nombreObra, String generoObra, String ideaCentral) {
@@ -41,6 +41,13 @@ public class Guion {
 	
 
 	public Guion(String nombreObra, String generoObra, String ideaCentral) {
+		super();
+		this.nombreObra = nombreObra;
+		this.generoObra = generoObra;
+		this.ideaCentral = ideaCentral;
+	}
+	
+	public Guion(String nombreObra, String generoObra, String ideaCentral, int idGuionista) {
 		super();
 		this.nombreObra = nombreObra;
 		this.generoObra = generoObra;

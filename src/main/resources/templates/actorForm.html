@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html">
+    </meta>
+    <title>Actores</title>
+</head>
+
+<body>
+    <div th:if="${completo == true}" th:text="Registro completado">
+    </div>
+    <form action="form" method="post">
+        <div>
+            <label>Nombre completo</label>
+            <input type="text" name="nombre">
+        </div>
+
+        <select name="genero" id="genero">
+            <option value="F">Femenino</option>
+            <option value="M">Masculino</option>
+            <option value="O">Otro</option>
+        </select>
+
+        <div>
+            <label>Estatura</label>
+            <input type="text" name="estatura">
+        </div>
+
+        <div>
+            <label>Complexión</label>
+            <input type="text" name="complexion">
+        </div>
+
+        <div>
+            <label>Color Ojos</label>
+            <input type="text" name="colorOjos">
+        </div>
+
+        <div>
+            <label>Color Pelo</label>
+            <input type="text" name="colorPelo">
+        </div>
+
+        <div>
+            <label>Fecha nacimiento</label>
+            <input type="date" id="fecha" name="fechaNacimiento" value="2020-07-18" min="1900-01-01" max="2020-12-12">
+        </div>
+
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
+
+    </form>
+</body>
+
+</html>

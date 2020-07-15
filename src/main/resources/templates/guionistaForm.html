@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html">
+    </meta>
+    <title>Guionistas</title>
+</head>
+
+<body>
+    <form action="form" method="post">
+        <div>
+            <label>Nombre completo</label>
+            <input type="text" name="nombre">
+        </div>
+
+        <div>
+            <label>Dirección exacta</label>
+            <input type="text" name="direccion">
+        </div>
+
+        <div>
+            <label>Fecha nacimiento</label>
+            <input type="date" id="fecha" name="fechaNacimiento" value="2020-07-18" min="1900-01-01" max="2020-12-12">
+        </div>
+
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
+
+    </form>
+</body>
+
+</html>

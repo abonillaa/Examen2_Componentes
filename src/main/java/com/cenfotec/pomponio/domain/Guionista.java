@@ -16,25 +16,24 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-@Table (name="TBL_GUIONISTA")
+@Table (name="tbl_guionista")
 public class Guionista {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID")
+	@Column(name="id")
 	private int id;
 	
-	@Column(name="NOMBRE")
+	@Column(name="nombre")
 	private String nombre;
 	
-	@Column(name="DIRECCION")
+	@Column(name="direccion")
 	private String direccion;
 	
-	@Column(name="FECHA_NACIMIENTO")
+	@Column(name="fecha_nacimiento")
 	private Date fechaNacimiento;
 	
 	@OneToMany(
         mappedBy = "guionista",
-        cascade = CascadeType.PERSIST,
         fetch = FetchType.LAZY
     )
     private Set<Guion> guiones;

@@ -27,13 +27,13 @@ public class ActorController {
 		return "actorIndex";
 	}
 	
-	@GetMapping("/actorForm")
+	@GetMapping("/actor/form")
 	public String actorForm(Model model) throws ParseException {
-		return "actorIndex";
+		return "actorForm";
 	}
 	
-	@PostMapping( "actorForm" )
-	 public void actorForm(@RequestParam MultiValueMap body) throws ParseException 
+	@PostMapping( "/actor/form" )
+	 public String actorForm(Model model, @RequestParam MultiValueMap body) throws ParseException 
 	 {   
 		 String nombre = (String) body .getFirst("nombre");
 		 String genero = (String) body .getFirst("genero");
@@ -44,6 +44,7 @@ public class ActorController {
 		 String fechaNacimiento = (String) body .getFirst("fechaNacimiento");
 		 Actor actor = new Actor(nombre,genero, estatura, complexion, colorOjos, colorPelo, formatFechaNacimiento(fechaNacimiento));   
 		 actorService.saveActor(actor);
+		 return "actorForm";
 	 }
 	
 	@GetMapping (value = "/actor/{id}")
@@ -55,7 +56,7 @@ public class ActorController {
 	 }
 	
 	private Date formatFechaNacimiento(String fecha) throws ParseException {
-		DateFormat format = new SimpleDateFormat("MM d, yyyy", Locale.ENGLISH);
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		return format.parse(fecha);
 	}
 }

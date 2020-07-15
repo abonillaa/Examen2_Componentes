@@ -28,19 +28,20 @@ public class GuionistaController {
 		return "guionistaIndex";
 	}
 	
-	@GetMapping("/guionistaForm")
+	@GetMapping("/guionista/form")
 	public String guionistaForm(Model model) throws ParseException {
 		return "guionistaForm";
 	}
 	
-	@PostMapping( "guionistaForm" )
-	 public void guionistaForm(@RequestParam MultiValueMap body) throws ParseException 
+	@PostMapping( "/guionista/form" )
+	 public String guionistaForm(@RequestParam MultiValueMap body) throws ParseException 
 	 {   
 		 String nombre = (String) body .getFirst("nombre");
 		 String direccion = (String) body .getFirst("direccion");
 		 String fechaNacimiento = (String) body .getFirst("fechaNacimiento");
 		 Guionista guionista = new Guionista(nombre,direccion, formatFechaNacimiento(fechaNacimiento));   
 		 guionistaService.saveGuionista(guionista);
+		 return "index";
 	 }
 	
 	@GetMapping (value = "/guionista/{id}")
@@ -52,7 +53,7 @@ public class GuionistaController {
 	 }
 	
 	private Date formatFechaNacimiento(String fecha) throws ParseException {
-		DateFormat format = new SimpleDateFormat("MM d, yyyy", Locale.ENGLISH);
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		return format.parse(fecha);
 	}
 }
