@@ -10,36 +10,36 @@ import javax.persistence.Id;
 
 
 @Entity
-@Table(name="TBL_ACTOR")
+@Table(name="tbl_actor")
 public class Actor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID")
-	private int id;
+	@Column(name="id")
+	private Long id;
 	
-	@Column(name="NOMBRE")
+	@Column(name="nombre")
 	private String nombre;
 	
-	@Column(name="GENERO")
+	@Column(name="genero")
 	private String genero;
 	
-	@Column(name="ESTATURA")
+	@Column(name="estatura")
 	private String estatura;
 	
-	@Column(name="COMPLEXION")
+	@Column(name="complexion")
 	private String complexion;
 	
-	@Column(name="COLOR_OJOS")
+	@Column(name="color_ojos")
 	private String colorOjos;
 	
-	@Column(name="COLOR_PELO")
+	@Column(name="color_pelo")
 	private String colorPelo;
 	
-	@Column(name="FECHA_NACIMIENTO")
+	@Column(name="fecha_nacimiento")
 	private Date fechaNacimiento;
 
-	public Actor(int id, String nombre, String genero, String estatura, String complexion, String colorOjos,
+	public Actor(Long id, String nombre, String genero, String estatura, String complexion, String colorOjos,
 			String colorPelo, Date fechaNacimiento) {
 		this.id = id;
 		this.nombre = nombre;
@@ -66,11 +66,11 @@ public class Actor {
 	public Actor() {
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

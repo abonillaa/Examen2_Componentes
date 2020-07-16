@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    
+    <meta charset="utf-8">
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html">
+    </meta>
+
+    <link rel="stylesheet" th:href="@{/css/table.css}"/>
+    <title>Actores</title>
+</head>
+
+<body>
+    <div>
+        <h1>Actores</h1>   
+        <div>
+            <a href="/actor/form">Nuevo registro</a>
+            <a href="/">Volver al menú</a>
+        </div>
+
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Género</th>
+                <th>Estatura</th>
+                <th>Complexión</th>
+                <th>Color ojos</th>
+                <th>Color pelo</th>
+                <th>Fecha nacimiento</th>
+            </tr>
+
+            <tr th:each="entry,status : ${actores}">
+                <td th:text="${entry.nombre}"></td>
+                <td th:text="${entry.genero}"></td>
+                <td th:text="${entry.estatura}"></td>
+                <td th:text="${entry.complexion}"></td>
+                <td th:text="${entry.colorOjos}"></td>
+                <td th:text="${entry.colorPelo}"></td>
+                <td th:text="${entry.fechaNacimiento}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

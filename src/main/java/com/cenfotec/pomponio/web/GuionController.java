@@ -1,6 +1,8 @@
 package com.cenfotec.pomponio.web;
 
 import java.text.ParseException;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.cenfotec.pomponio.domain.Guion;
 import com.cenfotec.pomponio.service.GuionService;
+import com.cenfotec.pomponio.service.GuionistaService;
 
 @Controller
 public class GuionController {
 	@Autowired
 	GuionService guionService;
+	
+	@Autowired
+	GuionistaService guionistaService;
 	
 	@GetMapping("/guion")
 	public String guionIndex(Model model) throws ParseException {
@@ -29,14 +35,21 @@ public class GuionController {
 	}
 	
 	@PostMapping( "/guion/form" )
-	 public void guionForm(@RequestParam MultiValueMap body) throws ParseException 
+	 public String guionForm(@RequestParam MultiValueMap body) throws ParseException 
 	 {   
 		 String nombre = (String) body.getFirst("nombre");
 		 String genero = (String) body.getFirst("genero");
 		 String ideaCentral = (String) body.getFirst("ideaCentral");
-		 int idGuionista = Integer.parseInt((String) body.getFirst("idGuionista"));
-		 Guion guion = new Guion(nombre,genero, ideaCentral, idGuionista);   
-		 guionService.saveGuion(guion);
+		 Long idGuionista = Long.parseLong((String) body.getFirst("idGuionista"));
+		 Guion guion = new Guion(nombre,genero, ideaCentral);  
+		 
+		 guionistaService.getGuionista(idGuionista).map(guionista ->{
+			 guion.setGuionista(guionista);
+			 guionService.saveGuion(guion);
+			 return "";
+		 });
+		 
+		 return "redirect:/guion";
 	 }
 	
 	@GetMapping (value = "/guion/{id}")
@@ -44,7 +57,7 @@ public class GuionController {
 		 Long idEntity = Long.parseLong(id);
 		 Guion obj = guionService.getGuion(idEntity).get();
 		 model.addAttribute("guion", obj);
-		 return "guion";
+		 return "guionIndex";
 	 }
 	
 }

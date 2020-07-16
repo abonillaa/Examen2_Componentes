@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    
+    <h1>Guion</h1>
 
     <form action="form" method="post">
         <div>
@@ -20,7 +20,12 @@
 
         <div>
             <label>Género de la obra</label>
-            <input type="text" name="genero">
+            <select name="genero" id="genero">
+                <option value="Tragedia">Tragedia</option>
+                <option value="Comedia">Comedia</option>
+                <option value="Culebron">Culebrón</option>
+                <option value="Fantasia">Fantasía</option>
+            </select>
         </div>
 
         <div>
@@ -35,6 +40,10 @@
 
         <div>
             <button type="submit">Enviar</button>
+        </div>
+
+        <div>
+            <a href="/guion">Volver a la lista</a>
         </div>
 
     </form>

@@ -12,12 +12,12 @@ import javax.persistence.ManyToOne;
 
 
 @Entity
-@Table(name="TBL_GUION")
+@Table(name="tbl_guion")
 public class Guion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private Long id;
 	
 	@Column(name="nombre_obra")
 	private String nombreObra;
@@ -28,11 +28,11 @@ public class Guion {
 	@Column(name="idea_central")
 	private String ideaCentral;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tbl_guionista_id", referencedColumnName="id")
+	@ManyToOne()
+    @JoinColumn(name = "id_guionista")
     private Guionista guionista;
 
-	public Guion(int id, String nombreObra, String generoObra, String ideaCentral) {
+	public Guion(Long id, String nombreObra, String generoObra, String ideaCentral) {
 		this.id = id;
 		this.nombreObra = nombreObra;
 		this.generoObra = generoObra;
@@ -41,14 +41,12 @@ public class Guion {
 	
 
 	public Guion(String nombreObra, String generoObra, String ideaCentral) {
-		super();
 		this.nombreObra = nombreObra;
 		this.generoObra = generoObra;
 		this.ideaCentral = ideaCentral;
 	}
 	
-	public Guion(String nombreObra, String generoObra, String ideaCentral, int idGuionista) {
-		super();
+	public Guion(String nombreObra, String generoObra, String ideaCentral, Long idGuionista) {
 		this.nombreObra = nombreObra;
 		this.generoObra = generoObra;
 		this.ideaCentral = ideaCentral;
@@ -58,12 +56,12 @@ public class Guion {
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -98,6 +96,5 @@ public class Guion {
 
 	public void setGuionista(Guionista guionista) {
 		this.guionista = guionista;
-		guionista.getGuiones().add(this);
 	}
 }

@@ -41,7 +41,7 @@ public class GuionistaController {
 		 String fechaNacimiento = (String) body .getFirst("fechaNacimiento");
 		 Guionista guionista = new Guionista(nombre,direccion, formatFechaNacimiento(fechaNacimiento));   
 		 guionistaService.saveGuionista(guionista);
-		 return "index";
+		 return "redirect:/guionista";
 	 }
 	
 	@GetMapping (value = "/guionista/{id}")

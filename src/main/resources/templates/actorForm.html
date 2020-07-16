@@ -10,8 +10,7 @@
 </head>
 
 <body>
-    <div th:if="${completo == true}" th:text="Registro completado">
-    </div>
+    <h1>Actor</h1>
     <form action="form" method="post">
         <div>
             <label>Nombre completo</label>
@@ -51,6 +50,10 @@
 
         <div>
             <button type="submit">Enviar</button>
+        </div>
+
+        <div>
+            <a href="/actor">Volver a la lista</a>
         </div>
 
     </form>
