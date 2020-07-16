@@ -28,4 +28,9 @@ public class GuionServiceImp implements GuionService{
 	public Optional<Guion> getGuion(Long id) {
 		return repository.findById(id);
 	}
+
+	@Override
+	public List<Guion> findbyNombre(String nombre) {
+		return repository.findByNombreObraContaining(nombre);
+	}
 }

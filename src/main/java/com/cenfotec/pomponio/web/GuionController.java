@@ -1,6 +1,7 @@
 package com.cenfotec.pomponio.web;
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.cenfotec.pomponio.domain.Actor;
 import com.cenfotec.pomponio.domain.Guion;
 import com.cenfotec.pomponio.service.GuionService;
 import com.cenfotec.pomponio.service.GuionistaService;
@@ -57,6 +60,13 @@ public class GuionController {
 		 Long idEntity = Long.parseLong(id);
 		 Guion obj = guionService.getGuion(idEntity).get();
 		 model.addAttribute("guion", obj);
+		 return "guionIndex";
+	 }
+	
+	@PostMapping (value = "/guion/search")
+	 public String searchGuion(Model model, @RequestParam MultiValueMap body) {
+		 List<Guion> list = guionService.findbyNombre((String) body .getFirst("nombre"));
+		 model.addAttribute("guiones", list);
 		 return "guionIndex";
 	 }
 	
