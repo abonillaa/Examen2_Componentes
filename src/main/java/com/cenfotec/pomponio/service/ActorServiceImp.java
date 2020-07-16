@@ -28,4 +28,9 @@ public class ActorServiceImp implements ActorService{
 	public Optional<Actor> getActor(Long id) {
 		return repository.findById(id);
 	}
+
+	@Override
+	public List<Actor> findbyNombre(String nombre) {
+		return repository.findByNombreContaining(nombre);
+	}
 }

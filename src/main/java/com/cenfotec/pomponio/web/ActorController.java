@@ -59,8 +59,17 @@ public class ActorController {
 		 Long idEntity = Long.parseLong(id);
 		 Actor obj = actorService.getActor(idEntity).get();
 		 model.addAttribute("actor", obj);
-		 return "actor";
+		 return "actorIndex";
 	 }
+	
+	@PostMapping (value = "/actor/search")
+	 public String searchActor(Model model, @RequestParam MultiValueMap body) {
+		 List<Actor> list = actorService.findbyNombre((String) body .getFirst("nombre"));
+		 model.addAttribute("actores", list);
+		 return "actorIndex";
+	 }
+	
+	
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.GET, value="/actor/rest")

@@ -8,4 +8,5 @@ public interface ActorService {
 	public void saveActor(Actor actor);  
 	public List<Actor> getAllActores();
 	public Optional<Actor> getActor(Long id);
+	public List<Actor> findbyNombre(String nombre);
 }
